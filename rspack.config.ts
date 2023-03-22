@@ -1,16 +1,19 @@
 import type { Configuration } from "@rspack/cli";
 import { readdirSync, readFileSync } from "fs";
+import path from "path";
 
 const data = readdirSync("data")
-  .map(fileName => `data/${fileName}`)
   .slice(0, Number(process.env.AMOUNT ?? 1))
 
 console.log(`Building ${data.length} configs...`)
 
-const createConfig = (dataPath: string) => ({
+const createConfig = (fileName: string) => ({
   context: __dirname,
   entry: {
     main: "./src/main.jsx"
+  },
+  output: {
+    filename: `${path.basename(fileName, ".json")}/main.js`,
   },
   builtins: {
     html: [
@@ -19,7 +22,7 @@ const createConfig = (dataPath: string) => ({
       }
     ],
     define: {
-      DATA: readFileSync(dataPath, "utf8"),
+      DATA: readFileSync(`data/${fileName}`, "utf8"),
     },
   },
   module: {
