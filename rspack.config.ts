@@ -1,6 +1,13 @@
 import type { Configuration } from "@rspack/cli";
+import { readdirSync, readFileSync } from "fs";
 
-export = {
+const data = readdirSync("data")
+  .map(fileName => `data/${fileName}`)
+  .slice(0, Number(process.env.AMOUNT ?? 1))
+
+console.log(`Building ${data.length} configs...`)
+
+const createConfig = (dataPath: string) => ({
   context: __dirname,
   entry: {
     main: "./src/main.jsx"
@@ -10,7 +17,10 @@ export = {
       {
         template: "./index.html"
       }
-    ]
+    ],
+    define: {
+      DATA: readFileSync(dataPath, "utf8"),
+    },
   },
   module: {
     rules: [
@@ -20,4 +30,6 @@ export = {
       }
     ]
   }
-} satisfies Configuration
+}) satisfies Configuration
+
+export = data.map(createConfig)

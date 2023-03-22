@@ -2,6 +2,8 @@ lockfileVersion: 5.4
 
 specifiers:
   '@rspack/cli': latest
+  '@tsconfig/node16': ^1.0.3
+  '@types/node': ^18.15.5
   '@types/react': ^18.0.25
   '@types/react-dom': ^18.0.8
   react: ^18.2.0
@@ -15,9 +17,11 @@ dependencies:
 
 devDependencies:
   '@rspack/cli': 0.1.2_ts-node@10.9.1
+  '@tsconfig/node16': 1.0.3
+  '@types/node': 18.15.5
   '@types/react': 18.0.28
   '@types/react-dom': 18.0.11
-  ts-node: 10.9.1_typescript@5.0.2
+  ts-node: 10.9.1_zlbzrxdj56n2qhafx752nt3nlm
   typescript: 5.0.2
 
 packages:
@@ -185,7 +189,7 @@ packages:
       '@rspack/core': 0.1.2
       '@rspack/dev-server': 0.1.2_@rspack+core@0.1.2
       colorette: 2.0.19
-      ts-node: 10.9.1_typescript@5.0.2
+      ts-node: 10.9.1_zlbzrxdj56n2qhafx752nt3nlm
       webpack-bundle-analyzer: 4.6.1
       yargs: 17.6.2
     transitivePeerDependencies:
@@ -2233,7 +2237,7 @@ packages:
     engines: {node: '>=6'}
     dev: true
 
-  /ts-node/10.9.1_typescript@5.0.2:
+  /ts-node/10.9.1_zlbzrxdj56n2qhafx752nt3nlm:
     resolution: {integrity: sha512-NtVysVPkxxrwFGUUxGYhfux8k78pQB3JqYBXlLRZgdGUqTO5wU/UyHop5p70iEbGhB7q5KmiZiU0Y3KlJrScEw==}
     hasBin: true
     peerDependencies:
@@ -2252,6 +2256,7 @@ packages:
       '@tsconfig/node12': 1.0.11
       '@tsconfig/node14': 1.0.3
       '@tsconfig/node16': 1.0.3
+      '@types/node': 18.15.5
       acorn: 8.8.2
       acorn-walk: 8.2.0
       arg: 4.1.3

@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "rspack serve",
-    "build": "rspack build"
+    "build": "for i in {1..12}; do AMOUNT=\"$i\" rspack build; done"
   },
   "dependencies": {
     "react": "^18.2.0",
@@ -12,6 +12,8 @@
   },
   "devDependencies": {
     "@rspack/cli": "latest",
+    "@tsconfig/node16": "^1.0.3",
+    "@types/node": "^18.15.5",
     "@types/react": "^18.0.25",
     "@types/react-dom": "^18.0.8",
     "ts-node": "^10.9.1",
