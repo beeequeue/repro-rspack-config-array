@@ -1,5 +1,10 @@
 lockfileVersion: '6.0'
 
+patchedDependencies:
+  '@rspack/core@0.1.11':
+    hash: 4vsy6tt3kat4x2uuzv4a26nkla
+    path: patches/@rspack__core@0.1.11.patch
+
 dependencies:
   react:
     specifier: ^18.2.0
@@ -115,8 +120,6 @@ packages:
       sockjs-client:
         optional: true
       type-fest:
-        optional: true
-      webpack:
         optional: true
       webpack-dev-server:
         optional: true
@@ -239,7 +242,7 @@ packages:
         optional: true
     dependencies:
       '@discoveryjs/json-ext': 0.5.7
-      '@rspack/core': 0.1.11
+      '@rspack/core': 0.1.11(patch_hash=4vsy6tt3kat4x2uuzv4a26nkla)
       '@rspack/dev-server': 0.1.11(@rspack/core@0.1.11)(react-refresh@0.14.0)
       colorette: 2.0.19
       semver: 6.3.0
@@ -264,7 +267,7 @@ packages:
       - webpack-plugin-serve
     dev: true
 
-  /@rspack/core@0.1.11:
+  /@rspack/core@0.1.11(patch_hash=4vsy6tt3kat4x2uuzv4a26nkla):
     resolution: {integrity: sha512-HZNtkZH9yFztEm8w5fHPXkQZMDkYTIlEHOk8Kft1Xqydu9hziZJTR3nwcnv+mxAPx8dZpHMIch101kl4j1sGzw==}
     dependencies:
       '@rspack/binding': 0.1.11
@@ -295,6 +298,7 @@ packages:
       - webpack-hot-middleware
       - webpack-plugin-serve
     dev: true
+    patched: true
 
   /@rspack/dev-client@0.1.11(react-refresh@0.14.0):
     resolution: {integrity: sha512-11TcK0Eimeu/8DmZE76Ytkdi0Kg7DHryQwF3WAFrxF7rrIPA9tOFZvH0aDFcbpBNwqkkfDA0nw6SXMoQaa1rOQ==}
@@ -329,7 +333,7 @@ packages:
   /@rspack/dev-middleware@0.1.11(webpack@5.76.0):
     resolution: {integrity: sha512-9HhQyQSpytpK6H4QHPiBgwHHn0zfZ6FKBWlpgOGDS58EDClMQyb9nrrG7sMFxyB4wqwnjggziO1/mJ6rv5OccA==}
     dependencies:
-      '@rspack/core': 0.1.11
+      '@rspack/core': 0.1.11(patch_hash=4vsy6tt3kat4x2uuzv4a26nkla)
       mime-types: 2.1.35
       webpack-dev-middleware: 6.0.2(webpack@5.76.0)
     transitivePeerDependencies:
@@ -354,7 +358,7 @@ packages:
     peerDependencies:
       '@rspack/core': '*'
     dependencies:
-      '@rspack/core': 0.1.11
+      '@rspack/core': 0.1.11(patch_hash=4vsy6tt3kat4x2uuzv4a26nkla)
       '@rspack/dev-client': 0.1.11(react-refresh@0.14.0)
       '@rspack/dev-middleware': 0.1.11(webpack@5.76.0)
       chokidar: 3.5.3
