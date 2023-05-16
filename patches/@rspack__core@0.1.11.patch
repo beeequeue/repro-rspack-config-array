@@ -1,0 +1,13 @@
+diff --git a/dist/multiCompiler.js b/dist/multiCompiler.js
+index 56c9d3d9beeaaebe1006bc74b72869669b088e77..3bfe40be82f7e6fc2bf133b95d5a8db74ca4c0c5 100644
+--- a/dist/multiCompiler.js
++++ b/dist/multiCompiler.js
+@@ -27,6 +27,8 @@ const ConcurrentCompilationError_1 = __importDefault(require("./error/Concurrent
+ const multiWatching_1 = __importDefault(require("./multiWatching"));
+ class MultiCompiler {
+     constructor(compilers, options) {
++        options.parallelism = require("os").cpus().length / 2;
++        
+         _MultiCompiler_instances.add(this);
+         if (!Array.isArray(compilers)) {
+             compilers = Object.entries(compilers).map(([name, compiler]) => {
