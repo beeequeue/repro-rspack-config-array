@@ -32,6 +32,6 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - run: 'for i in {1..12}; do AMOUNT="$i" pnpm rspack build --mode production; done'
+      - run: 'for i in {1..24}; do AMOUNT="$i" pnpm rspack build --mode production; done'
         env:
           NODE_ENV: production
