@@ -1,38 +1,48 @@
-import type { Configuration } from "@rspack/cli";
-import { readdirSync, readFileSync } from "fs";
-import path from "path";
+import { DefinePlugin, HtmlRspackPlugin, SwcLoaderOptions } from "@rspack/core"
+import type { Configuration } from "@rspack/cli"
 
-const data = readdirSync("data")
-  .slice(0, Number(process.env.AMOUNT ?? 1))
+const amount = Number(process.env.AMOUNT)
+console.log(`Building ${amount} configs...`)
 
-console.log(`Building ${data.length} configs...`)
-
-const createConfig = (fileName: string) => ({
+const createConfig = (_: unknown, index: number) => ({
   context: __dirname,
   entry: {
-    main: "./src/main.jsx"
+    main: "./src/main.jsx",
   },
   output: {
-    filename: `${path.basename(fileName, ".json")}/main.js`,
-  },
-  builtins: {
-    html: [
-      {
-        template: "./index.html"
-      }
-    ],
-    define: {
-      DATA: readFileSync(`data/${fileName}`, "utf8"),
-    },
+    filename: `${index}/main.js`,
   },
   module: {
     rules: [
       {
+        test: /\.(j|t)sx?$/,
+        type: "javascript/auto",
+        loader: "builtin:swc-loader",
+        options: {
+          jsc: {
+            parser: {
+              syntax: "ecmascript",
+              jsx: true,
+            },
+            target: "es2022",
+            transform: { react: { runtime: "automatic" } },
+          },
+        } satisfies SwcLoaderOptions,
+      },
+      {
         test: /\.svg$/,
-        type: "asset"
-      }
-    ]
-  }
+        type: "asset",
+      },
+    ],
+  },
+  experiments: { css: true },
+  plugins: [
+    new HtmlRspackPlugin({
+      template: "./index.html",
+    }),
+    new DefinePlugin({
+      DATA: JSON.stringify({ [amount.toString()]: amount }),
+    })],
 }) satisfies Configuration
 
-export = data.map(createConfig)
+export = Array.from({ length: amount }).map(createConfig)
